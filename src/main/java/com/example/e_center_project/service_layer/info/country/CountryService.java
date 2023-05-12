@@ -1,6 +1,7 @@
 package com.example.e_center_project.service_layer.info.country;
 
 import com.example.e_center_project.core.IEntityMapper;
+import com.example.e_center_project.core.IUnitOfWork;
 import com.example.e_center_project.data_layer.entity_classes.Country;
 import com.example.e_center_project.data_layer.info.country.ICountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,16 @@ public class CountryService
         implements ICountryService {
     private final ICountryRepository countryRepository;
     private final IEntityMapper entityMapper;
+    private final IUnitOfWork<Integer, Country, ICountryRepository> unitOfWork;
 
     @Autowired
     public CountryService(
             ICountryRepository countryRepository,
-            IEntityMapper entityMapper) {
+            IEntityMapper entityMapper,
+            IUnitOfWork<Integer, Country, ICountryRepository> unitOfWork) {
         this.countryRepository = countryRepository;
         this.entityMapper = entityMapper;
+        this.unitOfWork = unitOfWork;
     }
 
     @Override
@@ -39,10 +43,19 @@ public class CountryService
 
     @Override
     public CountryDto getCountryById(Integer id) {
+        /*
+
         Country country = countryRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("There no country in this id = %d".formatted(id)));
 
-        return entityMapper.entityToDto(country, CountryDto.class);
+        var result1 =  entityMapper.entityToDto(country, CountryDto.class);
+*/
+        var result = unitOfWork.readSingle(id, CountryDto.class);
+
+        if (result == null)
+            throw new IllegalStateException("There is no item in this id = %d".formatted(id));
+
+        return result;
     }
 
     @Override

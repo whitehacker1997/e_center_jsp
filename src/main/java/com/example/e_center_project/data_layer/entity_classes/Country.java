@@ -1,5 +1,6 @@
 package com.example.e_center_project.data_layer.entity_classes;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public class Country {
 
     @Id
     @NonNull
+    @Getter @Setter
     @SequenceGenerator(name = "country_sequence",sequenceName = "country_sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "country_sequence")
     public Integer id;
@@ -24,7 +26,7 @@ public class Country {
     @Getter @Setter
     public String orderCode;
 
-    @NonNull
+    @NotNull
     @Getter @Setter
     public String code;
 

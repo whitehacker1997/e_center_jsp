@@ -1,11 +1,9 @@
 package com.example.e_center_project.data_layer.entity_classes;
 
 import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
-import org.springframework.lang.Nullable;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,7 +14,7 @@ public class Country {
     }
 
     @Id
-    @NonNull
+    @NotNull
     @Getter @Setter
     @SequenceGenerator(name = "country_sequence",sequenceName = "country_sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "country_sequence")
@@ -30,20 +28,20 @@ public class Country {
     @Getter @Setter
     public String code;
 
-    @NonNull
+    @NotNull
     @Getter @Setter
     public String fullName;
 
-    @NonNull
+    @NotNull
     @Getter @Setter
     public String shortName;
 
-    @NonNull
+    @NotNull
     @Getter @Setter
     @Column(name = "state_id")
     public Integer stateId;
 
-    @NonNull
+    @NotNull
     @Getter @Setter
     public LocalDate createdAt;
 

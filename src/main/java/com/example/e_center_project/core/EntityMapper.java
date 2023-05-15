@@ -2,9 +2,8 @@ package com.example.e_center_project.core;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 public class EntityMapper
@@ -21,16 +20,14 @@ public class EntityMapper
     }
 
     @Override
-    public <D, E> List<D> entityListToDtoList(List<E> entityList,
-                                              Class<D> dtoClass) {
+    public <D, E> Stream<D> entityListToDtoList(List<E> entityList,
+                                                Class<D> dtoClass) {
         return entityList.stream()
-                .map(entity -> entityToDto(entity, dtoClass))
-                .collect(Collectors.toList());
+                .map(entity -> entityToDto(entity, dtoClass));
     }
 
     @Override
-    public <D, E> E dtoToEntity(D dto,
-                                Class<E> entityClass) {
-        return modelMapper.map(dto, entityClass);
+    public <D, S extends E, E> S dtoToEntity(D dto, Class<E> entityClass) {
+        return (S)modelMapper.map(dto, entityClass);
     }
 }

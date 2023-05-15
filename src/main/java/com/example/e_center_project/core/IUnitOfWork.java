@@ -1,9 +1,12 @@
 package com.example.e_center_project.core;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.stream.Stream;
 
-public interface IUnitOfWork<TId, T, TRepository> {
-    <T, D extends EntityDto<T>> D readSingle(TId id, Class<D> dto);
+public interface IUnitOfWork<TId, E, S extends E, TRepository> {
+    <E, D extends EntityDto<E>> D readSingle(TId id, Class<D> dto);
 
-    <E, D> Iterable<D> projectEntityToDto(E entity, Class<D> dto);
+    <E, D extends EntityDto<E>> Stream<D> projectEntityToDto(Class<D> dto);
+
+    <E, D extends EntityDto<E>> D create(Class<E> entityClass, D dto);
+    <S> E setEntityProperties(E entity);
 }

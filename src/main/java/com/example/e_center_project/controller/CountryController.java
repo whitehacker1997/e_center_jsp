@@ -1,6 +1,8 @@
 package com.example.e_center_project.controller;
 
+import com.example.e_center_project.core.HaveId;
 import com.example.e_center_project.data_layer.entity_classes.Country;
+import com.example.e_center_project.data_layer.info.country.CreateCountryDlDto;
 import com.example.e_center_project.service_layer.info.country.CountryDto;
 import com.example.e_center_project.service_layer.info.country.ICountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(name = "/country")
@@ -21,7 +24,7 @@ public class CountryController {
     }
 
     @GetMapping("/getCountryList")
-    public ResponseEntity<List<CountryDto>> getCountryList() {
+    public ResponseEntity<Stream<CountryDto>> getCountryList() {
         return ResponseEntity.ok(countryService.getCountryList());
     }
 
@@ -36,7 +39,7 @@ public class CountryController {
     }
 
     @PostMapping("/createCountry")
-    public ResponseEntity<Integer> createCountry(@RequestBody Country country){
+    public ResponseEntity<HaveId<Integer>> createCountry(@RequestBody CreateCountryDlDto country){
         return ResponseEntity.ok(countryService.createCountry(country));
     }
 

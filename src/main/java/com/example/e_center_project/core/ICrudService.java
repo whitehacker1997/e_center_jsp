@@ -1,6 +1,7 @@
 package com.example.e_center_project.core;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.e_center_project.core.models.ILinkToEntity;
+
 import java.util.stream.Stream;
 
 public interface ICrudService<TId, E, S extends E> {

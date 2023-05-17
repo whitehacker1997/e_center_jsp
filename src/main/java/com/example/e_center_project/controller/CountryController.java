@@ -1,8 +1,8 @@
 package com.example.e_center_project.controller;
 
-import com.example.e_center_project.core.HaveId;
-import com.example.e_center_project.data_layer.entity_classes.Country;
+import com.example.e_center_project.core.models.HaveId;
 import com.example.e_center_project.data_layer.info.country.CreateCountryDlDto;
+import com.example.e_center_project.data_layer.info.country.UpdateCountryDlDto;
 import com.example.e_center_project.service_layer.info.country.CountryDto;
 import com.example.e_center_project.service_layer.info.country.ICountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,18 +38,18 @@ public class CountryController {
     }
 
     @PostMapping("/createCountry")
-    public ResponseEntity<HaveId<Integer>> createCountry(@RequestBody CreateCountryDlDto country){
+    public ResponseEntity<HaveId<Integer>> createCountry(@RequestBody CreateCountryDlDto country) {
         return ResponseEntity.ok(countryService.createCountry(country));
     }
 
     @PutMapping("/updateCountry")
-    public ResponseEntity<Integer> updateCountry(@RequestBody Country country){
+    public ResponseEntity<Integer> updateCountry(@RequestBody UpdateCountryDlDto country) {
         countryService.updateCountry(country);
         return ResponseEntity.ok(country.id);
     }
 
     @DeleteMapping("/deleteCountry/{id}")
-    public void deleteCountry(@PathVariable("id") Integer id){
+    public void deleteCountry(@PathVariable("id") Integer id) {
         countryService.deleteCountry(id);
     }
 }

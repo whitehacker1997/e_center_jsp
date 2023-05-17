@@ -1,12 +1,16 @@
 package com.example.e_center_project.service_layer.info.country;
 
 import com.example.e_center_project.core.*;
+import com.example.e_center_project.core.models.HaveId;
+import com.example.e_center_project.core.models.HaveIdResp;
 import com.example.e_center_project.data_layer.entity_classes.Country;
 import com.example.e_center_project.data_layer.info.country.CreateCountryDlDto;
 import com.example.e_center_project.data_layer.info.country.ICountryRepository;
+import com.example.e_center_project.data_layer.info.country.UpdateCountryDlDto;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -40,7 +44,7 @@ public class CountryService
     }
 
     @Override
-    public CountryDto getCountryById(Integer id) {
+    public CountryDto getCountryById(@NotNull Integer id) {
         var result = crudService.readSingle(id, CountryDto.class);
 
         if (result == null)
@@ -66,27 +70,14 @@ public class CountryService
     }
 
     @Override
-    @Transactional
-    public void updateCountry(Country country) {
-        /*Country existingCountry
-                = countryRepository.findById(country.id)
-                .orElseThrow(() -> {
-                    return new IllegalStateException("Student with id = %d does not exists".formatted(country.id));
-                });
 
-        existingCountry.setCode(country.code);
-        existingCountry.setFullName(country.fullName);
-        existingCountry.setOrderCode(country.orderCode);
-        existingCountry.setStateId(country.stateId);*/
+    @Transactional
+    public void updateCountry(@NotNull UpdateCountryDlDto country) {
+        countryRepository.update(Country.class, country);
     }
 
     @Override
-    public void deleteCountry(Integer id) {
-        /*boolean exists = countryRepository.existsById(id);
-
-        if (!exists)
-            throw new IllegalStateException("Country id = %d does not exists".formatted(id));
-
-        countryRepository.deleteById(id);*/
+    public void deleteCountry(@NotNull Integer id) {
+        countryRepository.delete(id);
     }
 }

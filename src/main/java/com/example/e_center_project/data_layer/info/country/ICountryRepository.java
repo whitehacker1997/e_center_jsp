@@ -9,12 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-/*@Repository
-public interface ICountryRepository
-        extends JpaRepository<Country,Integer> {
-    @Query("SELECT c FROM Country c WHERE c.code = ?1")
-    Optional<Country> GetCountryByCode(String code);
-}*/
 @Repository
 public interface ICountryRepository
             extends IBaseEntityRepository<Integer,Country,Country,CountryDlDto,CreateCountryDlDto,UpdateCountryDlDto,JpaRepository<Country,Integer>> {

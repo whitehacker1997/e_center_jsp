@@ -1,6 +1,6 @@
 package com.example.e_center_project.data_layer.info.country;
 
-import com.example.e_center_project.core.EntityDto;
+import com.example.e_center_project.core.models.EntityDto;
 import com.example.e_center_project.data_layer.entity_classes.Country;
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
@@ -24,12 +24,4 @@ public class CountryDlDto
     @Getter
     @Setter
     public String shortName;
-
-    /*
-    @Override
-    public Country setEntityProperties(Country country) {
-        var entity = super.setEntityProperties(country);
-        entity.stateId = StateIdConst.ACTIVE;
-        return entity;
-    }*/
 }

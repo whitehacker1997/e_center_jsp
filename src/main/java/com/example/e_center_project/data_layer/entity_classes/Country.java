@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,45 +17,46 @@ public class Country {
     @Id
     @NotNull
     @Getter @Setter
-    @SequenceGenerator(name = "country_sequence",sequenceName = "country_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "country_sequence")
-    public Integer id;
+    @SequenceGenerator(name = "country_sequence", sequenceName = "country_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_sequence")
+    private Integer id;
 
     @Nullable
     @Getter @Setter
-    public String orderCode;
+    private String orderCode;
 
     @NotNull
     @Getter @Setter
-    public String code;
+    private String code;
 
     @NotNull
     @Getter @Setter
-    public String fullName;
+    private String fullName;
 
     @NotNull
     @Getter @Setter
-    public String shortName;
+    private String shortName;
 
     @NotNull
     @Getter @Setter
+    private LocalDate createdAt;
+
+    @Getter @Setter
+    private Integer createdBy;
+
+    @Getter @Setter
+    private LocalDate modifiedAt;
+
+    @Getter @Setter
+    private Integer modifiedBy;
+
+    @NotNull
     @Column(name = "state_id")
-    public Integer stateId;
-
-    @NotNull
-    @Getter @Setter
-    public LocalDate createdAt;
-
-    @Getter @Setter
-    public Integer createdBy;
-
-    @Getter @Setter
-    public LocalDate modifiedAt;
-
-    @Getter @Setter
-    public Integer modifiedBy;
+    @Setter
+    private Integer stateId;
 
     @ManyToOne
-    @JoinColumn(name = "state_id",referencedColumnName = "id",insertable = false,updatable = false)
-    public State state;
+    @Getter
+    @JoinColumn(name = "state_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private State state;
 }

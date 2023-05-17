@@ -1,13 +1,9 @@
 package com.example.e_center_project.core;
 
-import javassist.expr.Cast;
+import com.example.e_center_project.core.models.EntityDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Stream;
 
 @Component
 public class UnitOfWork<TId, E, S extends E, TRepository extends JpaRepository<E, TId>>

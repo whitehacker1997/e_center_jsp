@@ -1,5 +1,6 @@
 package com.example.e_center_project.core;
 
+import com.example.e_center_project.core.models.ILinkToEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;

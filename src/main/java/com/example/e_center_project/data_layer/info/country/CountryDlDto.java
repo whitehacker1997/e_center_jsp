@@ -1,4 +1,5 @@
 package com.example.e_center_project.data_layer.info.country;
+
 import com.example.e_center_project.core.EntityDto;
 import com.example.e_center_project.data_layer.entity_classes.Country;
 import com.sun.istack.NotNull;
@@ -7,17 +8,28 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class CountryDlDto
-        extends EntityDto<Country> {
+        extends EntityDto<CountryDlDto, Country> {
 
     @Nullable
-    @Getter @Setter
+    @Getter
+    @Setter
     public String orderCode;
 
     @NotNull
-    @Getter @Setter
+    @Getter
+    @Setter
     public String code;
 
     @NotNull
-    @Getter @Setter
+    @Getter
+    @Setter
     public String shortName;
+
+    /*
+    @Override
+    public Country setEntityProperties(Country country) {
+        var entity = super.setEntityProperties(country);
+        entity.stateId = StateIdConst.ACTIVE;
+        return entity;
+    }*/
 }

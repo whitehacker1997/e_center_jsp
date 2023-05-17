@@ -26,8 +26,8 @@ public class SwaggerConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("MY REST API")
-                .description("API description")
+                .title("XbCashbox.WebApi")
+                .description("DEVELOPMENT PROCESS OF PROJECT")
                 .version("1.0.0")
                 .build();
     }

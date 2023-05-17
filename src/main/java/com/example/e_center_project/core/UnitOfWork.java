@@ -23,27 +23,12 @@ public class UnitOfWork<TId, E, S extends E, TRepository extends JpaRepository<E
         this.repository = repository;
     }
 
-    @Override
-    public <E, D extends EntityDto<E>> D readSingle(TId id, Class<D> dto) {
-        E entity = (E) repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Entity not found"));
 
-        var result = entityMapper.entityToDto(entity, dto);
-
-        return result;
-    }
 
     @Override
-    public <E, D extends EntityDto<E>> Stream<D> projectEntityToDto(Class<D> dto) {
-        List<E> query = (List<E>) repository.findAll();
-
-        return entityMapper.entityListToDtoList(query, dto);
-    }
-
-    @Override
-    public <E, D extends EntityDto<E>> D create(Class<E> entityClass, D dto) {
-        S entity = (S)entityMapper.dtoToEntity(dto, entityClass);
-        entity = (S)setEntityProperties(entity);
+    public <E, D extends EntityDto<D, E>> D create(Class<E> entityClass, D dto) {
+        S entity = (S) entityMapper.dtoToEntity(dto, entityClass);
+        entity = (S) setEntityProperties(entity);
         S savedEntity = repository.save(entity);
         D savedDto = (D) entityMapper.entityToDto(savedEntity, dto.getClass());
         return savedDto;
@@ -52,18 +37,6 @@ public class UnitOfWork<TId, E, S extends E, TRepository extends JpaRepository<E
     public <S1> E setEntityProperties(E entity) {
         return entity;
     }
-
-
-    /*@Override
-    public <E, D extends EntityDto<E>, S extends E> D create(Class<E> entityClass, D dto) {
-        S entity = entityMapper.dtoToEntity(dto, entityClass);
-
-        S savedEntity = repository.save(entity);
-
-        D savedDto = (D) entityMapper.entityToDto(savedEntity, dto.getClass());
-
-        return savedDto;
-    }*/
 }
 
 

@@ -70,7 +70,6 @@ public class CountryService
     }
 
     @Override
-
     @Transactional
     public void updateCountry(@NotNull UpdateCountryDlDto country) {
         countryRepository.update(Country.class, country);

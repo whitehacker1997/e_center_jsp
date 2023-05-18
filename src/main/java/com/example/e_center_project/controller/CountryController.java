@@ -4,7 +4,7 @@ import com.example.e_center_project.core.models.HaveId;
 import com.example.e_center_project.data_layer.info.country.CreateCountryDlDto;
 import com.example.e_center_project.data_layer.info.country.UpdateCountryDlDto;
 import com.example.e_center_project.service_layer.info.country.CountryDto;
-import com.example.e_center_project.service_layer.info.country.ICountryService;
+import com.example.e_center_project.service_layer.info.country.concrete.ICountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

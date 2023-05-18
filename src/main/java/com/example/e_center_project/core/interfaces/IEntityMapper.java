@@ -1,4 +1,4 @@
-package com.example.e_center_project.core;
+package com.example.e_center_project.core.interfaces;
 
 import java.util.List;
 import java.util.stream.Stream;

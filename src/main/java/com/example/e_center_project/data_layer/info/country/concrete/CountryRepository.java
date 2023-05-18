@@ -1,9 +1,13 @@
-package com.example.e_center_project.data_layer.info.country;
+package com.example.e_center_project.data_layer.info.country.concrete;
 
-import com.example.e_center_project.core.BaseEntityRepository;
-import com.example.e_center_project.core.IEntityMapper;
+import com.example.e_center_project.core.services.BaseEntityRepository;
+import com.example.e_center_project.core.interfaces.IEntityMapper;
 import com.example.e_center_project.core.constants.StateIdConst;
 import com.example.e_center_project.data_layer.entity_classes.Country;
+import com.example.e_center_project.data_layer.info.country.CountryDlDto;
+import com.example.e_center_project.data_layer.info.country.CountryJpaRepository;
+import com.example.e_center_project.data_layer.info.country.CreateCountryDlDto;
+import com.example.e_center_project.data_layer.info.country.UpdateCountryDlDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

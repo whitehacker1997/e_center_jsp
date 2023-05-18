@@ -1,4 +1,4 @@
-package com.example.e_center_project.core;
+package com.example.e_center_project.core.interfaces;
 
 import com.example.e_center_project.core.models.EntityDto;
 import com.example.e_center_project.core.models.HaveId;

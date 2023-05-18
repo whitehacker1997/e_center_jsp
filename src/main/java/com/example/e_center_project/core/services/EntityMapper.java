@@ -1,5 +1,6 @@
-package com.example.e_center_project.core;
+package com.example.e_center_project.core.services;
 
+import com.example.e_center_project.core.interfaces.IEntityMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import java.util.List;

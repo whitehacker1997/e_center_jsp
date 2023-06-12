@@ -37,7 +37,7 @@ public class CountryService
     @Override
     public Stream<CountryDto> getCountryList() {
         return crudService.projectEntityToDto(CountryDto.class)
-                .filter(a -> a.id > 2);
+                /*.filter(a -> a.getId() > 2)*/;
     }
 
     @Override

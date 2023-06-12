@@ -6,11 +6,11 @@ import com.example.e_center_project.data_layer.info.country.UpdateCountryDlDto;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class CountryDto
         extends UpdateCountryDlDto
         implements ILinkToEntity<CountryDto, Country> {
 
-    @Getter
-    @Setter
-    public String stateName;
+    private String stateName;
 }

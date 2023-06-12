@@ -45,7 +45,7 @@ public class CountryController {
     @PutMapping("/updateCountry")
     public ResponseEntity<Integer> updateCountry(@RequestBody UpdateCountryDlDto country) {
         countryService.updateCountry(country);
-        return ResponseEntity.ok(country.id);
+        return ResponseEntity.ok(country.getId());
     }
 
     @DeleteMapping("/deleteCountry/{id}")

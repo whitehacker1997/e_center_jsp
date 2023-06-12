@@ -5,15 +5,14 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class UpdateCountryDlDto
         extends CountryDlDto implements IHaveIdProp<Integer> {
 
     @NotNull
-    @Getter
-    @Setter
-    public Integer id;
+    private Integer id;
 
     @NotNull
-    @Getter @Setter
-    public Integer stateId;
+    private Integer stateId;
 }
